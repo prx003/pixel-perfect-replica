@@ -9,7 +9,7 @@ import { AccountBadge, UserAvatar } from "@/components/UserAvatar";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/explore")({
-  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : undefined, focus: s.focus ? 1 : undefined }),
+  validateSearch: (s: Record<string, unknown>): { q?: string; focus?: number } => ({ q: typeof s.q === "string" ? s.q : undefined, focus: s.focus ? 1 : undefined }),
   head: () => ({
     meta: [
       { title: "Explore · SAC Community" },
