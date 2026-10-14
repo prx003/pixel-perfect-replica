@@ -49,7 +49,7 @@ export function StoriesRail() {
     <>
       <div
         ref={railRef}
-        className="no-scrollbar sticky top-32 flex max-h-[calc(100vh-9rem)] cursor-grab flex-col items-center gap-4 overflow-y-auto pb-6 active:cursor-grabbing sm:top-24"
+        className="no-scrollbar flex max-h-[calc(100vh-10rem)] cursor-grab flex-col items-center gap-4 overflow-y-auto pb-6 active:cursor-grabbing sm:top-24"
         onPointerDown={(e) => { if (e.pointerType === "mouse") drag.current = { y: e.clientY, top: railRef.current!.scrollTop }; }}
         onPointerMove={(e) => { if (drag.current) railRef.current!.scrollTop = drag.current.top - (e.clientY - drag.current.y); }}
         onPointerUp={() => (drag.current = null)}

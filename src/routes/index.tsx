@@ -28,11 +28,13 @@ function Feed() {
   const { data, isLoading, error } = useQuery({ queryKey: ["feed"], queryFn: () => fetchContent({ types: FEED_TYPES }) });
   const { data: r } = useReactions();
   return (
-    <div className="mx-auto flex max-w-4xl gap-3 px-2 pt-4 sm:gap-8 sm:px-5">
-      <aside className="w-[68px] shrink-0 sm:w-20">
-        <StoriesRail />
+    <div className="relative mx-auto max-w-2xl px-2 pt-4 sm:px-5">
+      <aside className="pointer-events-none fixed left-1 top-32 z-30 w-[68px] sm:left-3 sm:top-24 sm:w-20">
+        <div className="pointer-events-auto rounded-full bg-background/40 py-2 backdrop-blur-md">
+          <StoriesRail />
+        </div>
       </aside>
-      <section className="min-w-0 flex-1 space-y-5 pb-16 lg:max-w-[600px]">
+      <section className="min-w-0 space-y-5 pb-16">
         {isLoading && Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-72 animate-pulse rounded-2xl bg-card" />)}
         {error && <p className="rounded-xl bg-destructive/15 p-4 text-sm">Couldn't load the feed. {(error as Error).message}</p>}
         {data && data.length === 0 && (
